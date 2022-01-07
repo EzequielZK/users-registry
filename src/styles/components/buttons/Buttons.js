@@ -1,0 +1,49 @@
+import styled from "styled-components";
+
+const Button = styled.button`
+  border: 1px solid ${(props) => props.theme.colors.primary};
+  border-radius: 5px;
+  padding: ${(props) => props.theme.spacing.sm} ${(props) => props.theme.spacing.md};
+  font-size: ${(props) => props.theme.fontSize.md};
+  cursor: pointer;
+  width: ${(props) => (props.fullWidth ? "100%" : "unset")};
+  position: ${(props) => props.position};
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  :focus{
+    outline: none;
+  }
+`;
+
+export const IconButton = styled(Button)`
+  color: ${(props) => props.theme.colors.primary};
+  background-color: ${(props) => props.theme.colors.background};
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: ${(props) => props.theme.fontSize.xl};
+  box-shadow: 0 0 10px 0 gray;
+  animation: ${(props) => props.animation} 0.5s forwards;
+  :hover {
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.contrastBackground};
+  }
+`;
+
+export const MenuButton = styled(Button)`
+  color: ${(props) =>
+    props.selected
+      ? props.theme.colors.contrastBackground
+      : props.theme.colors.text};
+  background-color: ${(props) =>
+    props.selected ? props.theme.colors.primary : "transparent"};
+  border: none;
+  text-align: left;
+  font-size: ${(props) => props.theme.fontSize.xl};
+  border-radius: 0;
+  width: ${(props) => props.fullWidth && "100%"};
+  :hover {
+    color: ${(props) => !props.selected && props.theme.colors.primary};
+  }
+`;
