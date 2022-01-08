@@ -5,12 +5,12 @@ import mainTheme from "../../styles/themes/mainTheme";
 const theme = mainTheme;
 
 const CONTENT_WITH_NAV = movePadding(
-  `${theme.spacing.md} 0 0 ${theme.spacing.md}`,
-  `${theme.spacing.md} 0 0 ${theme.spacing.navContentPadding}`
+  `${theme.spacing.md}`,
+  `${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.navContentPadding}`
 );
 const CONTENT_WITHOUT_NAV = movePadding(
-  `${theme.spacing.md} 0 0 ${theme.spacing.navContentPadding}`,
-  `${theme.spacing.md} 0 0 ${theme.spacing.md}`
+  `${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.navContentPadding}`,
+  `${theme.spacing.md}`
 );
 
 const MENU_IN = move(`-${theme.spacing.sideBarWidth}`, "0px");

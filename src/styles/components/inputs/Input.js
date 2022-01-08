@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  background-color: ${(props) => props.theme.inputBg};
+  background-color: ${(props) => props.theme.colors.inputBg};
   color: ${(props) => props.theme.inputColor};
   padding: ${(props) => props.theme.spacing[props.padding]};
   display: flex;

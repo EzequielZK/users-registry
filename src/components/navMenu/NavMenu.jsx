@@ -1,39 +1,28 @@
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useTheme } from "styled-components";
+import { useEffect, useState } from "react";
 import { navIndex } from ".";
-import { Images } from "..";
-import { CONTENT_WITHOUT_NAV, CONTENT_WITH_NAV } from "../../animations";
-import {
-  DASHBOARD_PAGE,
-  HOME_PAGE,
-  NETWORKS_PAGE,
-  NETWORKS_REGISTER,
-  PROJECTS_PAGE,
-  REGISTER_PAGE,
-} from "../../navigation/paths";
-import { move, movePadding } from "../../styles/animations/move";
-import {
-  Column,
-  Container,
-  ContrastContainer,
-  MenuButton,
-  OutlinedButton,
-  Row,
-  Text,
-} from "../../styles/components";
+import { HOME_PAGE, REGISTER_PAGE } from "../../navigation/paths";
+import { Container } from "../../styles/components";
 import SideBar from "./sideBar/SideBar";
 import TopBar from "./topbar/TopBar";
 
 export default function NavMenu({ children }) {
   const [sideBarOpen, setSideBarOpen] = useState(true);
+  const [windowWidth, setWindowWidth] = useState();
 
-  let contentAnimation = CONTENT_WITHOUT_NAV;
-  if (sideBarOpen) {
-    contentAnimation = CONTENT_WITH_NAV;
-  }
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
+    function onResize(e) {
+      setWindowWidth(e.target.innerWidth);
+      setSideBarOpen(true);
+    }
+
+    window.addEventListener("resize", onResize);
+
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const route = useRouter();
 
   const menu = [
@@ -59,6 +48,7 @@ export default function NavMenu({ children }) {
             pathname={route.pathname}
             open={sideBarOpen}
             setOpen={setSideBarOpen}
+            windowWidth={windowWidth}
           />
 
           <TopBar>
@@ -72,10 +62,9 @@ export default function NavMenu({ children }) {
 
       <Container
         padding={2}
-        animation={contentAnimation}
+        paddingLeft={windowWidth && windowWidth > 600 && "266px"}
         fullWidth
         withBgColor
-        onMobile={{ animation: "none" }}
       >
         {children}
       </Container>

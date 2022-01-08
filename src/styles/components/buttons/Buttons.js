@@ -51,7 +51,7 @@ export const MenuButton = styled(Button)`
     props.selected ? props.theme.colors.primary : "transparent"};
   border: none;
   text-align: left;
-  font-size: ${(props) => props.theme.fontSize.xl};
+  font-size: ${(props) => props.theme.fontSize.lg};
   border-radius: 0;
   width: ${(props) => props.fullWidth && "100%"};
   :hover {
@@ -66,7 +66,7 @@ export const TabButton = styled(Button)`
   border-bottom: ${(props) =>
     props.selected && `1px solid ${props.theme.colors.primary}`};
   text-align: center;
-  font-size: ${(props) => props.theme.fontSize.xl};
+  font-size: ${(props) => props.theme.fontSize.lg};
   border-radius: 0;
   width: ${(props) => props.fullWidth && "100%"};
   :hover {

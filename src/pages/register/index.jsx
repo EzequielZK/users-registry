@@ -1,14 +1,17 @@
+import { useEffect } from "react";
 import { Tab } from "../../components/genericComponents";
+import BasicDataForm from "../../components/register/BasicDataForm";
+import saveUser from "../../cookies/saveUser";
 import { Container, ContrastContainer } from "../../styles/components";
 
 export default function Register() {
   return (
-    <ContrastContainer >
+    <ContrastContainer width="100%">
       <Tab
         screens={[
           {
             label: "Basic data",
-            component: () => <>Basic data</>,
+            component: BasicDataForm,
           },
           {
             label: "Address",

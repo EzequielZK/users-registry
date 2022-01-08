@@ -9,7 +9,6 @@ import {
 } from "../../../styles/components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { rotate } from "../../../styles/animations/rotate";
 import {
   MENU_IN,
   MENU_OUT,
@@ -17,26 +16,14 @@ import {
   ROTATE_RIGHT,
 } from "../../../animations/navMenu/NavMenuAnimations";
 import { useTheme } from "styled-components";
-import { useEffect, useState } from "react";
 
 export default function SideBar({
   menuItems = [],
   pathname,
-  footerItem,
   open,
   setOpen,
+  windowWidth
 }) {
-  const [windowWidth, setWindowWidth] = useState();
-  useEffect(() => {
-    function onResize(e) {
-      setWindowWidth(e.target.innerWidth);
-      setOpen(true);
-    }
-
-    window.addEventListener("resize", onResize);
-
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
   const theme = useTheme();
   let animation = MENU_OUT;
   if (open) {
@@ -66,7 +53,7 @@ export default function SideBar({
                   selected={item.path === pathname}
                   key={index}
                   fullWidth
-                  onClick={() => windowWidth < 500 && setOpen(false)}
+                  onClick={() => windowWidth < 600 && setOpen(false)}
                 >
                   {item.text}
                 </MenuButton>
@@ -74,11 +61,6 @@ export default function SideBar({
             </Row>
           ))}
         </Column>
-        {footerItem && (
-          <MenuButton className="column-item" fullWidth>
-            {footerItem.text}
-          </MenuButton>
-        )}
       </Column>
       <Hide screenSize={500}>
         <ControllerButton open={open} setOpen={setOpen} />
