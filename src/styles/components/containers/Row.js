@@ -9,15 +9,15 @@ export const Row = styled.div`
   flex-wrap: ${(props) => (props.wrap ? "wrap" : "unset")};
   > .row-item {
     margin: ${(props) =>
-      `${
+      `0 ${
+        Number(props.theme.spacing.sm.replace("px", "")) * props.spacing
+      }px ${
         props.spacing <= 12 && props.wrap
           ? `${
               Number(props.theme.spacing.sm.replace("px", "")) * props.spacing
             }px`
           : "0"
-      } ${
-        Number(props.theme.spacing.sm.replace("px", "")) * props.spacing
-      }px 0 0`};
+      } 0`};
   }
 
   > .row-item:is(:last-child) {

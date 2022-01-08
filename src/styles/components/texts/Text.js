@@ -5,5 +5,5 @@ export const Text = styled.span`
   text-align: ${(props) => props.textAlign};
   font-size: ${(props) => props.theme.fonts[props.variant]?.size};
   font-weight: ${(props) => props.theme.fonts[props.variant]?.weight};
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 `;

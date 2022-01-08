@@ -9,4 +9,13 @@ to {
 }
 `;
 
-export { move };
+const movePadding = (from, to) => keyframes`
+from{
+    padding: ${from};
+}
+to {
+    padding: ${to}
+}
+`;
+
+export { move, movePadding };

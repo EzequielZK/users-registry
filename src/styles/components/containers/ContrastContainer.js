@@ -20,7 +20,9 @@ export const ContrastContainer = styled.div`
   max-height: ${(props) =>
     typeof props.maxHeight === "number"
       ? `${props.maxHeight}px`
-      : props.maxHeight};
+      : props.maxHeight
+      ? props.maxHeight
+      : "100%"};
   height: ${(props) =>
     typeof props.h === "number" ? `${props.h}px` : props.h};
 
@@ -30,7 +32,9 @@ export const ContrastContainer = styled.div`
   z-index: ${(props) => props.zIndex};
   overflow-y: ${(props) => props.overflowY};
   box-shadow: ${(props) => props.boxShadow};
-  animation: ${(props) =>
-      props.animation}
-    0.5s forwards;
+  animation: ${(props) => props.animation} 0.5s forwards;
+
+  @media only screen and (max-width: 500px) {
+    height: ${(props) => props.onMobile?.height};
+  }
 `;

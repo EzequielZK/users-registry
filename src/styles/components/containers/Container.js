@@ -15,5 +15,13 @@ export const Container = styled.div`
   padding-left: ${(props) => props.navContent};
   position: ${(props) => props.position};
   top: ${(props) => props.top};
-  left: ${props => props.left}
+  left: ${(props) => props.left};
+
+
+  animation: ${(props) => props.animation} 0.5s forwards;
+
+  @media only screen and(max-width: 500px) {
+    animation: ${(props) => props.onMobile?.animation} 0.5 forwards;
+    
+  }
 `;

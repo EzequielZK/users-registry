@@ -35,7 +35,12 @@ class Modal extends React.Component {
     return (
       <ModalBackground>
         <OutsideClick onClickOutside={this.close}>
-          <ContrastContainer rounded width={options.width} h={options.height}>
+          <ContrastContainer
+            rounded
+            width={options.width}
+            h={options.height}
+            onMobile={{ height: "unset" }}
+          >
             <Component {...props} />
           </ContrastContainer>
         </OutsideClick>

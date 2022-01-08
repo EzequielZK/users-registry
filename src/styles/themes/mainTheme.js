@@ -4,7 +4,7 @@ const mainTheme = {
     contrastBackground: "#fff",
     primary: "#00a335",
     text: "#424749",
-    primaryText: "#424749",
+    primaryText: "#fff",
     inputBg: "#f2f2f2",
     inputColor: "#262626",
     inputPlaceholder: "#333333",
@@ -15,6 +15,9 @@ const mainTheme = {
     md: "16px",
     lg: "24px",
     xl: "32px",
+
+    sideBarWidth: '250px',
+    navContentPadding: '266px'
   },
   fontSize: {
     sm: "11px",
@@ -34,13 +37,17 @@ const mainTheme = {
     },
     h3: {
       size: "15px",
-      weight: 400,
+      weight: 500,
     },
     h4: {
-      size: "13px",
+      size: "15px",
       weight: 400,
     },
     h5: {
+      size: "13px",
+      weight: 400,
+    },
+    h6: {
       size: "11px",
       weight: 400,
     },

@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { useTheme } from "styled-components";
 import { navIndex } from ".";
 import { Images } from "..";
+import { CONTENT_WITHOUT_NAV, CONTENT_WITH_NAV } from "../../animations";
 import {
   DASHBOARD_PAGE,
   HOME_PAGE,
@@ -11,6 +14,7 @@ import {
   PROJECTS_PAGE,
   REGISTER_PAGE,
 } from "../../navigation/paths";
+import { move, movePadding } from "../../styles/animations/move";
 import {
   Column,
   Container,
@@ -24,6 +28,12 @@ import SideBar from "./sideBar/SideBar";
 import TopBar from "./topbar/TopBar";
 
 export default function NavMenu({ children }) {
+  const [sideBarOpen, setSideBarOpen] = useState(true);
+
+  let contentAnimation = CONTENT_WITHOUT_NAV;
+  if (sideBarOpen) {
+    contentAnimation = CONTENT_WITH_NAV;
+  }
   const route = useRouter();
 
   const menu = [
@@ -39,16 +49,17 @@ export default function NavMenu({ children }) {
 
   const page = navIndex[route.pathname] ? navIndex[route.pathname] : {};
 
-  if (route.pathname.includes("public")) {
-    return children;
-  }
-
   const { TopBarContent = () => <></> } = page;
   return (
     <Container fullHeight withBgColor>
       {page.navigation && (
         <>
-          <SideBar menuItems={menu} pathname={route.pathname} />
+          <SideBar
+            menuItems={menu}
+            pathname={route.pathname}
+            open={sideBarOpen}
+            setOpen={setSideBarOpen}
+          />
 
           <TopBar>
             <TopBarContent
@@ -61,9 +72,10 @@ export default function NavMenu({ children }) {
 
       <Container
         padding={2}
-        navContent={page.sideBar && "266px"}
+        animation={contentAnimation}
         fullWidth
         withBgColor
+        onMobile={{ animation: "none" }}
       >
         {children}
       </Container>

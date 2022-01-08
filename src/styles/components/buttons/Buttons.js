@@ -10,8 +10,19 @@ const Button = styled.button`
   position: ${(props) => props.position};
   top: ${(props) => props.top};
   left: ${(props) => props.left};
-  :focus{
+  :focus {
     outline: none;
+  }
+`;
+
+export const OutlinedButton = styled(Button)`
+  color: ${(props) => props.theme.colors.primary};
+  background-color: transparent;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  :hover {
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primaryText};
   }
 `;
 
@@ -40,6 +51,21 @@ export const MenuButton = styled(Button)`
     props.selected ? props.theme.colors.primary : "transparent"};
   border: none;
   text-align: left;
+  font-size: ${(props) => props.theme.fontSize.xl};
+  border-radius: 0;
+  width: ${(props) => props.fullWidth && "100%"};
+  :hover {
+    color: ${(props) => !props.selected && props.theme.colors.primary};
+  }
+`;
+
+export const TabButton = styled(Button)`
+  color: ${(props) => props.theme.colors.text};
+  background-color: transparent;
+  border: none;
+  border-bottom: ${(props) =>
+    props.selected && `1px solid ${props.theme.colors.primary}`};
+  text-align: center;
   font-size: ${(props) => props.theme.fontSize.xl};
   border-radius: 0;
   width: ${(props) => props.fullWidth && "100%"};

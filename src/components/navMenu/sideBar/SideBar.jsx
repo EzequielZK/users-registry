@@ -1,31 +1,52 @@
-import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import {
   Column,
-  Container,
   ContrastContainer,
-  Divider,
+  Hide,
   IconButton,
   MenuButton,
   Row,
 } from "../../../styles/components";
-import Images from "../../images/Images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
-import { move } from "../../../styles/animations/move";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { rotate } from "../../../styles/animations/rotate";
+import {
+  MENU_IN,
+  MENU_OUT,
+  ROTATE_LEFT,
+  ROTATE_RIGHT,
+} from "../../../animations/navMenu/NavMenuAnimations";
+import { useTheme } from "styled-components";
+import { useEffect, useState } from "react";
 
-export default function SideBar({ menuItems = [], pathname, footerItem }) {
-  const menuIn = move("-250px", "0px");
-  const menuOut = move("0", "-250px");
-  const [animation, setAnimation] = useState(menuIn);
+export default function SideBar({
+  menuItems = [],
+  pathname,
+  footerItem,
+  open,
+  setOpen,
+}) {
+  const [windowWidth, setWindowWidth] = useState();
+  useEffect(() => {
+    function onResize(e) {
+      setWindowWidth(e.target.innerWidth);
+      setOpen(true);
+    }
+
+    window.addEventListener("resize", onResize);
+
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  const theme = useTheme();
+  let animation = MENU_OUT;
+  if (open) {
+    animation = MENU_IN;
+  }
   return (
     <ContrastContainer
       fullHeight
       padding="0px"
-      width={250}
+      width={theme.spacing.sideBarWidth}
       maxWidth="100%"
       position="fixed"
       left={0}
@@ -45,6 +66,7 @@ export default function SideBar({ menuItems = [], pathname, footerItem }) {
                   selected={item.path === pathname}
                   key={index}
                   fullWidth
+                  onClick={() => windowWidth < 500 && setOpen(false)}
                 >
                   {item.text}
                 </MenuButton>
@@ -58,39 +80,26 @@ export default function SideBar({ menuItems = [], pathname, footerItem }) {
           </MenuButton>
         )}
       </Column>
-      <ControllerButton
-        onClick={() => {
-          if (animation.id === menuIn.id) {
-            setAnimation(menuOut);
-          } else {
-            setAnimation(menuIn);
-          }
-        }}
-      />
+      <Hide screenSize={500}>
+        <ControllerButton open={open} setOpen={setOpen} />
+      </Hide>
     </ContrastContainer>
   );
 }
 
-function ControllerButton({ onClick }) {
-  const rotateToRight = rotate("0deg", "180deg");
-  const rotateToLeft = rotate("180deg", "0deg");
-  const [animation, setAnimation] = useState(rotateToLeft);
+function ControllerButton({ open, setOpen }) {
+  let animation = ROTATE_RIGHT;
+  if (open) {
+    animation = ROTATE_LEFT;
+  }
   return (
     <IconButton
+      className="hide-item"
       position="absolute"
-      top="50%"
+      top="20px"
       left="230px"
       animation={animation}
-      onClick={() => {
-        if (animation.id === rotateToLeft.id) {
-          setAnimation(rotateToRight);
-        } else {
-          setAnimation(rotateToLeft);
-        }
-        if (onClick) {
-          onClick();
-        }
-      }}
+      onClick={() => setOpen(!open)}
     >
       <FontAwesomeIcon icon={faChevronLeft} />
     </IconButton>

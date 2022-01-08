@@ -5,7 +5,6 @@ export function setModalRef(ref) {
 }
 
 function defaultModal(component = () => <></>, options = {width: 'unset', height:'unset', props: {}}) {
-  console.log({ modalRef });
   if (!modalRef) {
     return;
   }

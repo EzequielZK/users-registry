@@ -13,6 +13,7 @@ import {
 import { Text } from "./texts/Text";
 import { Divider } from "./divider/Divider";
 import { ModalBackground } from "./modal/ModalBackground";
+import { Hide } from "./containers/Hide";
 
 export {
   Container,
@@ -28,4 +29,5 @@ export {
   Divider,
   ModalBackground,
   IconButton,
+  Hide
 };
