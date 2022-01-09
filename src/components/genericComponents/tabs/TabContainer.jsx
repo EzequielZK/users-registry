@@ -10,7 +10,6 @@ import {
 import { useState } from "react";
 
 export default function TabContainer({ allowNavigate = true, screens = [] }) {
-  console.log({ allowNavigate });
   const [selected, setSelected] = useState(0);
   let TabContent = () => <></>;
   let props = {};
@@ -31,6 +30,10 @@ export default function TabContainer({ allowNavigate = true, screens = [] }) {
     if (selected > 0) {
       setSelected(selected - 1);
     }
+  };
+
+  const goToFirstTab = () => {
+    setSelected(0);
   };
 
   return (
@@ -57,6 +60,7 @@ export default function TabContainer({ allowNavigate = true, screens = [] }) {
             selected={selected}
             goNextTab={goNextTab}
             goPrevTab={goPrevTab}
+            goToFirstTab={goToFirstTab}
           />
         </Column>
       </Container>

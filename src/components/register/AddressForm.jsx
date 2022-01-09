@@ -15,7 +15,6 @@ export default function AddressForm({
   return (
     <Form
       onSubmit={(data) => {
-        console.log({ data });
         setUserData({ ...userData, ...data });
         goNextTab();
       }}

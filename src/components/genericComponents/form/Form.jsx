@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Form({ onSubmit, children, clearOnSubmit, ...props }) {
-  let form;
+  const [from, setForm] = useState();
   let data = {};
   useEffect(() => {
-    form = document.getElementById("form");
+    const formRef = document.getElementById("form");
+    setForm(formRef);
   }, []);
 
   return (

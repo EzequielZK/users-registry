@@ -10,7 +10,6 @@ export default function Register() {
   const clearData = () => {
     setUserData({});
   };
-  console.log({ userData });
   return (
     <ContrastContainer width="100%">
       <Tab

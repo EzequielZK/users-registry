@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ContrastContainer = styled.div`
-  background-color: ${(props) => props.theme.colors.contrastBackground};
+  background-color: ${(props) =>
+    props.theme.colors[props.bgColor ?? "contrastBackground"]};
   color: ${(props) => props.theme.colors.text};
   padding: ${(props) =>
     !props.padding ? props.theme.spacing.md : props.padding};
@@ -43,4 +44,3 @@ export const ContrastContainer = styled.div`
     height: ${(props) => props.onMobile?.height};
   }
 `;
-

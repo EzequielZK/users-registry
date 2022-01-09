@@ -6,14 +6,22 @@ import {
   Row,
 } from "../../styles/components";
 import { CustomInput, Form } from "../genericComponents";
+import openFeedbackModal from "../genericComponents/feedbackModal/openFeedbackModal";
 
-export default function PersonalDataForm({ userData, clearData, goPrevTab }) {
+export default function PersonalDataForm({
+  userData,
+  clearData,
+  goPrevTab,
+  goToFirstTab,
+}) {
   return (
     <Form
       clearOnSubmit
       onSubmit={(data) => {
         saveUser({ ...userData, ...data });
+        openFeedbackModal.successModal("Usuário salvo com sucesso!");
         clearData();
+        goToFirstTab();
       }}
     >
       <Column className="column-item" spacing={2}>
@@ -39,6 +47,7 @@ export default function PersonalDataForm({ userData, clearData, goPrevTab }) {
           label="Salary"
           defaultValue={userData.salary}
           placeholder="R$ 0,00"
+          required
         />
         <Row spacing={2}>
           <OutlinedButton className="row-item" onClick={() => goPrevTab()}>

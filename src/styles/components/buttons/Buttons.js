@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  border: 1px solid ${(props) => props.theme.colors.primary};
+  border: 1px solid ${(props) => props.theme.colors[props.color ?? "primary"]};
   border-radius: 5px;
   padding: ${(props) => props.theme.spacing.sm} ${(props) => props.theme.spacing.md};
   font-size: ${(props) => props.theme.fontSize.md};
@@ -25,12 +25,12 @@ export const ContainedButton = styled(Button)`
 `;
 
 export const OutlinedButton = styled(Button)`
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors[props.color ?? "primary"]};
   background-color: transparent;
   max-width: 100%;
   overflow-wrap: break-word;
   :hover {
-    background-color: ${(props) => props.theme.colors.primary};
+    background-color: ${(props) => props.theme.colors[props.color ?? 'primary']};
     color: ${(props) => props.theme.colors.primaryText};
   }
 `;

@@ -2,11 +2,19 @@ import { parseCookies, setCookie } from "nookies";
 
 export default function saveUser(user) {
   const cookie = parseCookies();
-console.log(cookie)
-  const users = cookie.users ? JSON.parse(cookie.users) : [];
-  users.push(user);
 
-  //   console.log({ cookie: JSON.parse(cookie.users) });
+  const users = cookie.users ? JSON.parse(cookie.users) : [];
+  console.log({ savedUsers: users });
+  if (users.length) {
+    const lastLength = users.length - 1;
+
+    const lastUser = users[lastLength];
+    users.push({ id: lastUser.id + 1, ...user });
+  } else {
+    users.push({ id: 1, ...user });
+  }
+
+  console.log({ newUsers: users });
 
   const stringUsers = JSON.stringify(users);
 

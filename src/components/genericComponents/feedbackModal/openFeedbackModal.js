@@ -4,19 +4,18 @@ export function setFeedbackModalRef(ref) {
   feedbackModalRef = ref;
 }
 
-function defaultModal(
+function successModal(
   text,
-  options = { width: "unset", height: "unset", props: {} }
 ) {
   if (!feedbackModalRef) {
     return;
   }
 
-  feedbackModalRef.setModalProps(text, options);
+  feedbackModalRef.setModalProps(text, 'success');
 }
 
 export function closeModal() {
   feedbackModalRef.close();
 }
 
-export default { defaultModal };
+export default { successModal };

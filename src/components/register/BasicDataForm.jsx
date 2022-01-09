@@ -6,7 +6,6 @@ export default function BasicDataForm({ setUserData, userData, goNextTab }) {
   return (
     <Form
       onSubmit={(data) => {
-        console.log({ userData });
         setUserData({ ...userData, ...data });
         goNextTab();
       }}
@@ -47,7 +46,7 @@ export default function BasicDataForm({ setUserData, userData, goNextTab }) {
         <div>
           <ContainedButton
             type="submit"
-            onClick={() => openFeedbackModal.defaultModal("Oh yes!")}
+
           >
             Next
           </ContainedButton>

@@ -1,20 +1,16 @@
-import {
-  ContrastContainer,
-  ModalBackground,
-  Text,
-} from "../../../styles/components";
+import { ContrastContainer, Text } from "../../../styles/components";
 import { setFeedbackModalRef } from "./openFeedbackModal";
 import React from "react";
-import { OutsideClick } from "../..";
 import {
   MOVE_FROM_TOP,
   MOVE_TO_TOP,
 } from "../../../animations/feedbackModal/feedbackModalAnimation";
+import mainTheme from "../../../styles/themes/mainTheme";
 
 class FeedbackModal extends React.Component {
   state = {
     open: false,
-    options: {},
+    type: "",
     text: "",
     animation: MOVE_TO_TOP,
   };
@@ -38,31 +34,43 @@ class FeedbackModal extends React.Component {
     }
   };
 
-  setModalProps = (text, options) => {
-    this.setState({ text, options, open: true, animation: MOVE_FROM_TOP });
+  setModalProps = (text, type) => {
+    this.setState({ text, type, open: true, animation: MOVE_FROM_TOP });
+  };
+
+  getTypeModal = (type) => {
+    const modalType = {
+      success: {
+        bgColor: "primary",
+        color: "contrastBackground",
+      },
+      error: {
+        bgColor: "red",
+        color: "contrastBackground",
+      },
+    };
+    return modalType[type];
   };
 
   render() {
-    const { open, text, options, animation } = this.state;
-    // const { props } = options;
+    const { text, type, animation } = this.state;
+    const theme = this.getTypeModal(type);
 
     return (
       <ContrastContainer
         rounded
-        width={options.width}
-        h={options.height}
         position="absolute"
         zIndex={2000}
         top="-50px"
         right="5px"
         boxShadow="0 0 10px 0 gray"
+        bgColor={theme?.bgColor}
         animationName={animation}
         animationDuration="0.5s"
         animationFillMode="forwards"
         onMobile={{ height: "unset" }}
       >
-        <Text>{text}</Text>
-        adsadsadsa
+        <Text color={theme?.color}>{text}</Text>
       </ContrastContainer>
     );
   }

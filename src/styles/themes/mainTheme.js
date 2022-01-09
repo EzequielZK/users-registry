@@ -10,6 +10,7 @@ const mainTheme = {
     inputPlaceholder: "#7c7c7c",
     hoverDark: "#262626",
     disabled: "#7c7c7c",
+    error: "red",
   },
   spacing: {
     sm: "8px",

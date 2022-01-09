@@ -15,8 +15,8 @@ export default function Home() {
   useEffect(() => {
     const usersList = getUsers();
     setUsers(usersList);
-  }, []);
-  console.log(users);
+  }, [users.length]);
+
   if (!users.length) {
     return (
       <EmptyPage
@@ -29,7 +29,7 @@ export default function Home() {
     <Container>
       <Row spacing={2} wrap>
         {users.map((item, index) => (
-          <UsersCards key={index} details={item} />
+          <UsersCards key={index} details={item} setUsers={setUsers} />
         ))}
       </Row>
     </Container>
