@@ -5,13 +5,22 @@ const Button = styled.button`
   border-radius: 5px;
   padding: ${(props) => props.theme.spacing.sm} ${(props) => props.theme.spacing.md};
   font-size: ${(props) => props.theme.fontSize.md};
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   width: ${(props) => (props.fullWidth ? "100%" : "unset")};
   position: ${(props) => props.position};
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   :focus {
     outline: none;
+  }
+`;
+
+export const ContainedButton = styled(Button)`
+  color: ${(props) => props.theme.colors.primaryText};
+  background-color: ${(props) => props.theme.colors.primary};
+  :hover {
+    background-color: transparent;
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -35,7 +44,11 @@ export const IconButton = styled(Button)`
   height: 50px;
   font-size: ${(props) => props.theme.fontSize.xl};
   box-shadow: 0 0 10px 0 gray;
-  animation: ${(props) => props.animation} 0.5s forwards;
+  animation-name: ${(props) => props.animationName};
+  animation-delay: ${(props) => props.animationDelay};
+  animation-duration: ${(props) => props.animationDuration};
+  animation-direction: ${(props) => props.animationDirection};
+  animation-fill-mode: ${(props) => props.animationFillMode};
   :hover {
     background-color: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.contrastBackground};
@@ -60,7 +73,8 @@ export const MenuButton = styled(Button)`
 `;
 
 export const TabButton = styled(Button)`
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) =>
+    props.disabled ? props.theme.colors.disabled : props.theme.colors.text};
   background-color: transparent;
   border: none;
   border-bottom: ${(props) =>
@@ -69,7 +83,9 @@ export const TabButton = styled(Button)`
   font-size: ${(props) => props.theme.fontSize.lg};
   border-radius: 0;
   width: ${(props) => props.fullWidth && "100%"};
+
   :hover {
-    color: ${(props) => !props.selected && props.theme.colors.primary};
+    color: ${(props) =>
+      !props.selected && !props.disabled && props.theme.colors.primary};
   }
 `;

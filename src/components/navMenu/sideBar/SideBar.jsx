@@ -22,7 +22,7 @@ export default function SideBar({
   pathname,
   open,
   setOpen,
-  windowWidth
+  windowWidth,
 }) {
   const theme = useTheme();
   let animation = MENU_OUT;
@@ -42,7 +42,9 @@ export default function SideBar({
       zIndex={1500}
       boxShadow="-15px 10px 15px 10px gray"
       padding="100px 0 0 0"
-      animation={animation}
+      animationName={animation}
+      animationDuration="0.5s"
+      animationFillMode="forwards"
     >
       <Column spacing={6} fullWidth>
         <Column className="column-item">
@@ -80,7 +82,9 @@ function ControllerButton({ open, setOpen }) {
       position="absolute"
       top="20px"
       left="230px"
-      animation={animation}
+      animationName={animation}
+      animationDuration="0.5s"
+      animationFillMode="forwards"
       onClick={() => setOpen(!open)}
     >
       <FontAwesomeIcon icon={faChevronLeft} />

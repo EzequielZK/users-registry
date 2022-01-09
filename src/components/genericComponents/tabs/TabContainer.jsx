@@ -1,7 +1,16 @@
-import { Container, Divider, Row, TabButton, Text } from "../../../styles/components";
+import {
+  Column,
+  Container,
+  Divider,
+  OutlinedButton,
+  Row,
+  TabButton,
+  Text,
+} from "../../../styles/components";
 import { useState } from "react";
 
-export default function TabContainer({ screens = [] }) {
+export default function TabContainer({ allowNavigate = true, screens = [] }) {
+  console.log({ allowNavigate });
   const [selected, setSelected] = useState(0);
   let TabContent = () => <></>;
   let props = {};
@@ -12,6 +21,18 @@ export default function TabContainer({ screens = [] }) {
     }
   }
 
+  const goNextTab = () => {
+    if (selected + 1 < screens.length) {
+      setSelected(selected + 1);
+    }
+  };
+
+  const goPrevTab = () => {
+    if (selected > 0) {
+      setSelected(selected - 1);
+    }
+  };
+
   return (
     <Container fullWidth>
       <Row fullWidth>
@@ -19,16 +40,25 @@ export default function TabContainer({ screens = [] }) {
           <TabButton
             key={index}
             selected={selected === index}
-            onClick={() => setSelected(index)}
+            disabled={!allowNavigate && selected < index}
+            onClick={() =>
+              allowNavigate || selected > index ? setSelected(index) : {}
+            }
           >
-           {item.label}
-     
+            {item.label}
           </TabButton>
         ))}
       </Row>
       <Divider color="background" />
       <Container padding={2}>
-        <TabContent {...props} />
+        <Column spacing={2}>
+          <TabContent
+            {...props}
+            selected={selected}
+            goNextTab={goNextTab}
+            goPrevTab={goPrevTab}
+          />
+        </Column>
       </Container>
     </Container>
   );

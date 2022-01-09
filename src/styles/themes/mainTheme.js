@@ -7,8 +7,9 @@ const mainTheme = {
     primaryText: "#fff",
     inputBg: "#f2f2f2",
     inputColor: "#262626",
-    inputPlaceholder: "#333333",
+    inputPlaceholder: "#7c7c7c",
     hoverDark: "#262626",
+    disabled: "#7c7c7c",
   },
   spacing: {
     sm: "8px",
@@ -16,8 +17,8 @@ const mainTheme = {
     lg: "24px",
     xl: "32px",
 
-    sideBarWidth: '250px',
-    navContentPadding: '266px'
+    sideBarWidth: "250px",
+    navContentPadding: "266px",
   },
   fontSize: {
     sm: "11px",

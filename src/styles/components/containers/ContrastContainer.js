@@ -29,12 +29,18 @@ export const ContrastContainer = styled.div`
   cursor: ${(props) => (props.button ? "pointer" : "default")};
   position: ${(props) => props.position};
   top: ${(props) => props.top};
+  right: ${(props) => props.right};
   z-index: ${(props) => props.zIndex};
   overflow-y: ${(props) => props.overflowY};
   box-shadow: ${(props) => props.boxShadow};
-  animation: ${(props) => props.animation} 0.5s forwards;
+  animation-name: ${(props) => props.animationName};
+  animation-delay: ${(props) => props.animationDelay};
+  animation-duration: ${(props) => props.animationDuration};
+  animation-direction: ${(props) => props.animationDirection};
+  animation-fill-mode: ${(props) => props.animationFillMode};
 
   @media only screen and (max-width: 500px) {
     height: ${(props) => props.onMobile?.height};
   }
 `;
+

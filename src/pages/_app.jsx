@@ -4,7 +4,7 @@ import GlobalStyle from "../styles/globals";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/themes/mainTheme.js";
 import Head from "next/head";
-import App from "next/app";
+import FeedbackModal from "../components/genericComponents/feedbackModal/FeedbackModal.jsx";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
         </NavMenu>
         <GlobalStyle />
         <Modal />
+        <FeedbackModal />
       </ThemeProvider>
     </>
   );

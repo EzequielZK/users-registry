@@ -7,7 +7,7 @@ import {
 } from "../../styles/components";
 import UserDetails from "./UserDetails";
 
-export default function UsersCards({ name }) {
+export default function UsersCards({ details }) {
   return (
     <ContrastContainer
       className="row-item"
@@ -16,13 +16,13 @@ export default function UsersCards({ name }) {
       boxShadow="0 10px 10px -10px gray"
     >
       <Row align="center" justify="space-between" fullWidth wrap>
-        <Text >{name}</Text>
+        <Text>{details.name}</Text>
         <OutlinedButton
           onClick={() =>
             openModal.defaultModal(UserDetails, {
               width: 900,
               height: 700,
-              props: { name },
+              props: { details },
             })
           }
         >

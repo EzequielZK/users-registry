@@ -64,6 +64,7 @@ export default function NavMenu({ children }) {
         padding={2}
         paddingLeft={windowWidth && windowWidth > 600 && "266px"}
         fullWidth
+        fullHeight
         withBgColor
       >
         {children}

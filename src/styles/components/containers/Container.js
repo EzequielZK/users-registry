@@ -8,7 +8,8 @@ export const Container = styled.div`
     `${Number(props.theme.spacing.sm.replace("px", "") * props.padding)}px`};
   display: flex;
   flex-direction: column;
-  justify-content: stretch;
+  justify-content: ${(props) => props.justify};
+  align-items: ${(props) => props.align};
   height: ${(props) => (props.fullHeight ? "100%" : "auto")};
   width: ${(props) => (props.fullWidth ? "100%" : "auto")};
   overflow-y: ${(props) => props.overflowY};
@@ -17,5 +18,4 @@ export const Container = styled.div`
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   animation: ${(props) => props.animation} 0.5s forwards;
-
 `;

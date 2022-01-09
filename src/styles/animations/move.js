@@ -18,4 +18,12 @@ to {
 }
 `;
 
-export { move, movePadding };
+const moveTop = (from, to) => keyframes`
+from{
+    top: ${from};
+}
+to {
+   top: ${to};
+}`;
+
+export { move, movePadding, moveTop };

@@ -1,35 +1,35 @@
-import { Column, Divider, Text } from "../../styles/components";
+import { Column, Text } from "../../styles/components";
 import UserDetailsSection from "./UserDetailsSection";
 
-export default function UserDetails({ name }) {
+export default function UserDetails({ details }) {
   return (
     <Column fullWidth spacing={4}>
       <Text className="column-item" textAlign="center" variant="h1">
-        {name}
+        {details.name}
       </Text>
       <UserDetailsSection
         title="Basic data"
         content={[
-          { label: "Name", value: "Roberto" },
-          { label: "Last name", value: "Silva" },
-          { label: "Email", value: "exemplo@email.com" },
-          { label: "Phone", value: "Silva" },
+          { label: "Name", value: details.name },
+          { label: "Last name", value: details.lastName },
+          { label: "Email", value: details.email },
+          { label: "Phone", value: details.phone },
         ]}
       />
       <UserDetailsSection
         title="Address"
         content={[
-          { label: "CEP", value: "88000-000" },
-          { label: "Address 01", value: "Avenida do desenvolvimento, 300" },
-          { label: "Address 02", value: "Avenida do desenvolvimento, 300" },
+          { label: "CEP", value: details.cep },
+          { label: "Address 01", value: details.address1 },
+          { label: "Address 02", value: details.address2 },
         ]}
       />
       <UserDetailsSection
         title="Personal data"
         content={[
-          { label: "Data de nascimento", value: "31/08/1995" },
-          { label: "CPF", value: "000.000.000-00" },
-          { label: "Renda Mensal", value: "R$ 4.000.00" },
+          { label: "Data de nascimento", value: details.birthdate },
+          { label: "CPF", value: details.cpf },
+          { label: "Renda Mensal", value: details.salary },
         ]}
       />
     </Column>
