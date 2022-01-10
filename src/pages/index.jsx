@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { UsersCards } from "../components";
 import { EmptyPage } from "../components/genericComponents";
+import editUser from "../cookies/editUser";
 import getUsers from "../cookies/getUsers";
 import {
   Container,
@@ -10,8 +11,15 @@ import {
   Text,
 } from "../styles/components";
 
+
 export default function Home() {
   const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const usersList = getUsers();
+    setUsers(usersList);
+  }, []);
+
   useEffect(() => {
     const usersList = getUsers();
     setUsers(usersList);
@@ -29,9 +37,16 @@ export default function Home() {
     <Container>
       <Row spacing={2} wrap>
         {users.map((item, index) => (
-          <UsersCards key={index} details={item} setUsers={setUsers} />
+          <UsersCards
+            key={index}
+            details={item}
+            setUsers={setUsers}
+            users={users}
+          />
         ))}
       </Row>
     </Container>
   );
 }
+
+

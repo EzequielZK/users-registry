@@ -80,6 +80,10 @@ function ControllerButton({ open, setOpen }) {
     <IconButton
       className="hide-item"
       position="absolute"
+      boxShadow="0 0 10px 0 gray"
+      borderRadius="50%"
+      width="50px"
+      height="50px"
       top="20px"
       left="230px"
       animationName={animation}

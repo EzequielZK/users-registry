@@ -6,7 +6,6 @@ export default function deleteUser(id) {
   const users = cookie.users ? JSON.parse(cookie.users) : [];
   const indexToRemove = users.map((item) => item.id).indexOf(id);
   users.splice(indexToRemove, 1);
-  console.log({ users });
   const stringUsers = JSON.stringify(users);
 
   setCookie(null, "users", stringUsers, {

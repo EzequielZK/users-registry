@@ -11,6 +11,7 @@ const mainTheme = {
     hoverDark: "#262626",
     disabled: "#7c7c7c",
     error: "red",
+    transparent: 'rgba(0, 0, 0, 0)'
   },
   spacing: {
     sm: "8px",

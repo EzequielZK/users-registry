@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Button = styled.button`
   border: 1px solid ${(props) => props.theme.colors[props.color ?? "primary"]};
   border-radius: 5px;
-  padding: ${(props) => props.theme.spacing.sm} ${(props) => props.theme.spacing.md};
+  padding: ${(props) => !props.withoutPadding && props.theme.spacing.sm} ${(props) => !props.withoutPadding && props.theme.spacing.md};
   font-size: ${(props) => props.theme.fontSize.md};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   width: ${(props) => (props.fullWidth ? "100%" : "unset")};
@@ -30,28 +30,31 @@ export const OutlinedButton = styled(Button)`
   max-width: 100%;
   overflow-wrap: break-word;
   :hover {
-    background-color: ${(props) => props.theme.colors[props.color ?? 'primary']};
+    background-color: ${(props) =>
+      props.theme.colors[props.color ?? "primary"]};
     color: ${(props) => props.theme.colors.primaryText};
   }
 `;
 
 export const IconButton = styled(Button)`
   color: ${(props) => props.theme.colors.primary};
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${(props) =>
+    props.theme.colors[props.bgColor ?? "background"]};
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  border-radius: ${(props) => props.borderRadius};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   font-size: ${(props) => props.theme.fontSize.xl};
-  box-shadow: 0 0 10px 0 gray;
+  box-shadow: ${(props) => props.boxShadow};
   animation-name: ${(props) => props.animationName};
   animation-delay: ${(props) => props.animationDelay};
   animation-duration: ${(props) => props.animationDuration};
   animation-direction: ${(props) => props.animationDirection};
   animation-fill-mode: ${(props) => props.animationFillMode};
-  :hover {
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.contrastBackground};
+  :active {
+    background-color: ${(props) =>
+      props.theme.colors[props.active?.bgColor ?? "transparent"]};
+    color: ${(props) => props.theme.colors[props.active?.color ?? "primary"]};
   }
 `;
 

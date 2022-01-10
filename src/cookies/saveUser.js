@@ -4,7 +4,6 @@ export default function saveUser(user) {
   const cookie = parseCookies();
 
   const users = cookie.users ? JSON.parse(cookie.users) : [];
-  console.log({ savedUsers: users });
   if (users.length) {
     const lastLength = users.length - 1;
 
@@ -14,7 +13,6 @@ export default function saveUser(user) {
     users.push({ id: 1, ...user });
   }
 
-  console.log({ newUsers: users });
 
   const stringUsers = JSON.stringify(users);
 

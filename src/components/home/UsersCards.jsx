@@ -1,5 +1,8 @@
+import { useEffect, useState } from "react";
 import { openModal } from "..";
 import deleteUser from "../../cookies/deleteUser";
+import editUser from "../../cookies/editUser";
+import getUsers from "../../cookies/getUsers";
 import {
   Column,
   ContainedButton,
@@ -10,7 +13,14 @@ import {
 } from "../../styles/components";
 import UserDetails from "./UserDetails";
 
-export default function UsersCards({ details, setUsers }) {
+export default function UsersCards({ details, setUsers, users }) {
+  const [name, setName] = useState(details.name);
+
+  useEffect(() => {
+    const selectedUser = getUsers(details.id);
+    setName(selectedUser.name);
+  }, []);
+
   return (
     <ContrastContainer
       className="row-item"
@@ -19,7 +29,7 @@ export default function UsersCards({ details, setUsers }) {
       boxShadow="0 10px 10px -10px gray"
     >
       <Column spacing={1} align="flex-start" fullWidth wrap>
-        <Text className="column-item">{details.name}</Text>
+        <Text className="column-item">{name}</Text>
         <Row spacing={2} className="column-item" fullWidth>
           <ContainedButton
             className="row-item"
@@ -28,7 +38,7 @@ export default function UsersCards({ details, setUsers }) {
               openModal.defaultModal(UserDetails, {
                 width: 900,
                 height: 700,
-                props: { details },
+                props: { id: details.id, users, setName },
               })
             }
           >

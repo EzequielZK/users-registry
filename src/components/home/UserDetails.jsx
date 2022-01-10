@@ -1,37 +1,86 @@
 import { Column, Text } from "../../styles/components";
 import UserDetailsSection from "./UserDetailsSection";
+import { Form, openFeedbackModal } from "../genericComponents";
+import editUser from "../../cookies/editUser";
+import { useEffect, useState } from "react";
+import getUsers from "../../cookies/getUsers";
 
-export default function UserDetails({ details }) {
+export default function UserDetails({ id, users, setName }) {
+  const [userDetails, setUserDetails] = useState({});
+
+  const setUserDetailsAndUpdate = (newDetails) => {
+    const newUsers = users;
+
+    const indexToEdit = newUsers.map((item) => item.id).indexOf(userDetails.id);
+
+    newUsers[indexToEdit] = { ...newUsers[indexToEdit], ...newDetails };
+
+    editUser(userDetails.id, newDetails);
+    setUserDetails((state) => ({ ...state, ...newDetails }));
+  };
+
+  useEffect(() => {
+    const selectedUser = getUsers(id);
+    setUserDetails(selectedUser);
+  }, []);
+
   return (
-    <Column fullWidth spacing={4}>
-      <Text className="column-item" textAlign="center" variant="h1">
-        {details.name}
-      </Text>
-      <UserDetailsSection
-        title="Basic data"
-        content={[
-          { label: "Name", value: details.name },
-          { label: "Last name", value: details.lastName },
-          { label: "Email", value: details.email },
-          { label: "Phone", value: details.phone },
-        ]}
-      />
-      <UserDetailsSection
-        title="Address"
-        content={[
-          { label: "CEP", value: details.cep },
-          { label: "Address 01", value: details.address1 },
-          { label: "Address 02", value: details.address2 },
-        ]}
-      />
-      <UserDetailsSection
-        title="Personal data"
-        content={[
-          { label: "Data de nascimento", value: details.birthdate },
-          { label: "CPF", value: details.cpf },
-          { label: "Renda Mensal", value: details.salary },
-        ]}
-      />
-    </Column>
+    <Form
+      onSubmit={(data) => {
+        setUserDetailsAndUpdate(data);
+        if (data.name) {
+          setName(data.name);
+        }
+
+        openFeedbackModal.successModal("Information edited!");
+      }}
+    >
+      <Column fullWidth spacing={4}>
+        <Text className="column-item" textAlign="center" variant="h1">
+          {userDetails.name}
+        </Text>
+        <UserDetailsSection
+          title="Basic data"
+          content={[
+            { label: "Name", value: userDetails.name, name: "name" },
+            {
+              label: "Last name",
+              value: userDetails.lastName,
+              name: "lastName",
+            },
+            { label: "E-mail", value: userDetails.email, name: "email" },
+            { label: "Phone", value: userDetails.phone, name: "phone" },
+          ]}
+        />
+        <UserDetailsSection
+          title="Address"
+          content={[
+            { label: "CEP", value: userDetails.cep, name: "cep" },
+            {
+              label: "Address 01",
+              value: userDetails.address1,
+              name: "address1",
+            },
+            {
+              label: "Address 02",
+              value: userDetails.address2,
+              name: "address2",
+            },
+          ]}
+        />
+        <UserDetailsSection
+          title="Personal data"
+          content={[
+            {
+              label: "Birthdate",
+              value: userDetails.birthdate,
+              name: "birthdate",
+            },
+            { label: "CPF", value: userDetails.cpf, name: "cpf" },
+            { label: "Salary", value: userDetails.salary, name: "salary" },
+          ]}
+        />
+      </Column>
+    </Form>
   );
 }

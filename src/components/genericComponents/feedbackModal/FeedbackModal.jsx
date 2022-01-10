@@ -12,7 +12,7 @@ class FeedbackModal extends React.Component {
     open: false,
     type: "",
     text: "",
-    animation: MOVE_TO_TOP,
+    animation: '',
   };
 
   componentDidMount() {
@@ -62,7 +62,7 @@ class FeedbackModal extends React.Component {
         position="absolute"
         zIndex={2000}
         top="-50px"
-        right="5px"
+        right="50%"
         boxShadow="0 0 10px 0 gray"
         bgColor={theme?.bgColor}
         animationName={animation}

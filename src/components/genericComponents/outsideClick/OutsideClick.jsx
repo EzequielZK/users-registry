@@ -2,14 +2,15 @@ import React from "react";
 
 export default function OutsideClick({ onClickOutside = () => {}, children }) {
   React.useEffect(() => {
+    const container = document.getElementById("container");
     function mouseInside(e) {
-      if (!document.getElementById("container")?.contains(e.target)) {
+      if (!container?.contains(e.target)) {
         onClickOutside();
       }
     }
-    window.addEventListener("click", mouseInside);
+    document.addEventListener("click", mouseInside);
 
-    return () => window.removeEventListener("click", mouseInside);
+    return () => document.removeEventListener("click", mouseInside);
   }, []);
 
   return (
