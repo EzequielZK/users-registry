@@ -31,6 +31,9 @@ export default function PersonalDataForm({
           label="Birthdate"
           placeholder="dd/MM/yyyy"
           defaultValue={userData.birthdate}
+          validation="isValidDate"
+          type="date"
+          max={getMaxDate()}
           required
         />
         <CustomInput
@@ -63,4 +66,23 @@ export default function PersonalDataForm({
       </Column>
     </Form>
   );
+}
+
+function getMaxDate() {
+  const today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+
+  if (dd < 10) {
+    dd = `0${dd}`;
+  }
+
+  if (mm < 10) {
+    mm = `0${mm}`;
+  }
+
+  const maxDate = `${yyyy}-${mm}-${dd}`;
+
+  return maxDate;
 }

@@ -9,6 +9,7 @@ export default function CustomInput({
   containerStyle,
   mask,
   validation,
+  helperText,
   ...props
 }) {
   const [value, setValue] = useState(props.defaultValue);
@@ -43,20 +44,14 @@ export default function CustomInput({
     getInputErrors(props.name, error);
   }, [error]);
 
-  function sendRef() {
-    return {
-      name: props.name,
-      label: props.label,
-      value,
-      error,
-    };
-  }
-
   const maskToUse = masks[mask];
   const validationToTest = validations[validation];
   return (
     <Column {...containerStyle}>
-      <Text variant="h3">{label}</Text>
+      <Text variant="h3">
+        {label}
+        {props.required && "*"}
+      </Text>
       <Input
         {...props}
         value={value}
@@ -67,6 +62,9 @@ export default function CustomInput({
           )
         }
       />
+      <Text color="disabled" variant="h6">
+        {helperText}
+      </Text>
       {error && (
         <Text color="error" variant="h5">
           {errorMessage}

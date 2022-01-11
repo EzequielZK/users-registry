@@ -48,14 +48,31 @@ export default function UserDetails({ id, users, setName }) {
               value: userDetails.lastName,
               name: "lastName",
             },
-            { label: "E-mail", value: userDetails.email, name: "email" },
-            { label: "Phone", value: userDetails.phone, name: "phone" },
+            {
+              label: "E-mail",
+              value: userDetails.email,
+              name: "email",
+              validation: "isEmail",
+            },
+            {
+              label: "Phone",
+              value: userDetails.phone,
+              name: "phone",
+              validation: "isPhone",
+              mask: "phoneMask",
+            },
           ]}
         />
         <UserDetailsSection
           title="Address"
           content={[
-            { label: "CEP", value: userDetails.cep, name: "cep" },
+            {
+              label: "CEP",
+              value: userDetails.cep,
+              name: "cep",
+              validation: "isCep",
+              mask: "cepMask",
+            },
             {
               label: "Address 01",
               value: userDetails.address1,
@@ -76,8 +93,8 @@ export default function UserDetails({ id, users, setName }) {
               value: userDetails.birthdate,
               name: "birthdate",
             },
-            { label: "CPF", value: userDetails.cpf, name: "cpf" },
-            { label: "Salary", value: userDetails.salary, name: "salary" },
+            { label: "CPF", value: userDetails.cpf, name: "cpf", validation:'isCpf', mask:'cpfMask' },
+            { label: "Salary", value: userDetails.salary, name: "salary", mask:'moneyMask' },
           ]}
         />
       </Column>

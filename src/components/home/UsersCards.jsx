@@ -14,11 +14,11 @@ import {
 import UserDetails from "./UserDetails";
 
 export default function UsersCards({ details, setUsers, users }) {
-  const [name, setName] = useState(details.name);
+  const [name, setName] = useState('');
 
   useEffect(() => {
     const selectedUser = getUsers(details.id);
-    setName(selectedUser.name);
+    setName(`${selectedUser.name} ${selectedUser.lastName}`);
   }, []);
 
   return (

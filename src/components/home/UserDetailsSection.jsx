@@ -32,7 +32,6 @@ export default function UserDetailsSection({ title, content = [] }) {
               withoutPadding
               bgColor="transparent"
               type="submit"
-       
             >
               <FontAwesomeIcon icon={faCheck} />
             </IconButton>
@@ -43,20 +42,21 @@ export default function UserDetailsSection({ title, content = [] }) {
       {content.map((item, index) =>
         editMode ? (
           <CustomInput
-            name={item.name}
-            key={index}
-            label={item.label}
+            {...item}
             defaultValue={item.value}
+            readOnly={item.name === "cpf"}
           />
         ) : (
-          <Row className="column-item" spacing={1} key={index}>
-            <Text className="row-item" variant="h3">
-              {item.label}:
-            </Text>
-            <Text className="row-item" variant="h4">
-              {item.value}
-            </Text>
-          </Row>
+          item.value && (
+            <Row className="column-item" spacing={1} key={index}>
+              <Text className="row-item" variant="h3">
+                {item.label}:
+              </Text>
+              <Text className="row-item" variant="h4">
+                {item.value}
+              </Text>
+            </Row>
+          )
         )
       )}
     </Container>

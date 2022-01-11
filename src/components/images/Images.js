@@ -1,4 +1,3 @@
-import DarkLogo from "../../assets/img/Logo-dark.png";
-import IconLogo from "../../assets/img/Logo-icon.png";
+import Logo from "../../assets/img/Users-logo.png";
 
-export default { DarkLogo, IconLogo };
+export default { Logo };

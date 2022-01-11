@@ -16,6 +16,8 @@ import {
   ROTATE_RIGHT,
 } from "../../../animations/navMenu/NavMenuAnimations";
 import { useTheme } from "styled-components";
+import Image from "next/image";
+import Images from "../../images/Images";
 
 export default function SideBar({
   menuItems = [],
@@ -41,12 +43,13 @@ export default function SideBar({
       h="100%"
       zIndex={1500}
       boxShadow="-15px 10px 15px 10px gray"
-      padding="100px 0 0 0"
+      // padding="100px 0 0 0"
       animationName={animation}
       animationDuration="0.5s"
       animationFillMode="forwards"
     >
       <Column spacing={6} fullWidth>
+        <Image src={Images.Logo} />
         <Column className="column-item">
           {menuItems.map((item, index) => (
             <Row key={index} fullWidth>

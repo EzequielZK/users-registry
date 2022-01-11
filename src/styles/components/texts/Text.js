@@ -6,4 +6,5 @@ export const Text = styled.span`
   font-size: ${(props) => props.theme.fonts[props.variant]?.size};
   font-weight: ${(props) => props.theme.fonts[props.variant]?.weight};
   overflow-wrap: anywhere;
+
 `;

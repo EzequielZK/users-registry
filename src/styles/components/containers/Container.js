@@ -17,5 +17,9 @@ export const Container = styled.div`
   position: ${(props) => props.position};
   top: ${(props) => props.top};
   left: ${(props) => props.left};
-  animation: ${(props) => props.animation} 0.5s forwards;
+  animation-name: ${(props) => props.animationName};
+  animation-delay: ${(props) => props.animationDelay};
+  animation-duration: ${(props) => props.animationDuration};
+  animation-direction: ${(props) => props.animationDirection};
+  animation-fill-mode: ${(props) => props.animationFillMode};
 `;

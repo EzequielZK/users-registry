@@ -1,4 +1,4 @@
-import { ContrastContainer, Text } from "../../../styles/components";
+import { Container, ContrastContainer, Text } from "../../../styles/components";
 import { setFeedbackModalRef } from "../../genericComponents/feedbackModal/openFeedbackModal";
 import React from "react";
 import {
@@ -56,21 +56,27 @@ class FeedbackModal extends React.Component {
     const theme = this.getTypeModal(type);
 
     return (
-      <ContrastContainer
-        rounded
+      <Container
+        fullWidth
         position="absolute"
         zIndex={2000}
-        top="-50px"
-        right="550px"
-        boxShadow="0 0 10px 0 gray"
-        bgColor={theme?.bgColor}
+        top="-55px"
+        // right="550px"
+        align="center"
         animationName={animation}
         animationDuration="0.5s"
         animationFillMode="forwards"
         onMobile={{ height: "unset" }}
       >
-        <Text color={theme?.color}>{text}</Text>
-      </ContrastContainer>
+        <ContrastContainer
+          bgColor={theme?.bgColor}
+          rounded
+          boxShadow="0 0 10px 0 gray"
+          zIndex={2500}
+        >
+          <Text color={theme?.color}>{text}</Text>
+        </ContrastContainer>
+      </Container>
     );
   }
 }
