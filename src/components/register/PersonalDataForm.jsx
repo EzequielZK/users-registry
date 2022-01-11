@@ -37,6 +37,8 @@ export default function PersonalDataForm({
           containerStyle={{ className: "column-item" }}
           name="cpf"
           label="CPF"
+          mask="cpfMask"
+          validation="isCpf"
           placeholder="000.000.000-00"
           defaultValue={userData.cpf}
           required
@@ -45,6 +47,7 @@ export default function PersonalDataForm({
           containerStyle={{ className: "column-item" }}
           name="salary"
           label="Salary"
+          mask="moneyMask"
           defaultValue={userData.salary}
           placeholder="R$ 0,00"
           required

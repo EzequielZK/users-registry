@@ -1,6 +1,5 @@
 import { Column, ContainedButton } from "../../styles/components";
 import { CustomInput, Form } from "../genericComponents";
-import openFeedbackModal from "../genericComponents/feedbackModal/openFeedbackModal";
 
 export default function BasicDataForm({ setUserData, userData, goNextTab }) {
   return (
@@ -40,8 +39,8 @@ export default function BasicDataForm({ setUserData, userData, goNextTab }) {
           containerStyle={{ className: "column-item" }}
           name="phone"
           label="Phone"
-          mask="cpfMask"
-          validation="isCpf"
+          mask="phoneMask"
+          validation="isPhone"
           placeholder="(00) 0 0000-0000"
           defaultValue={userData.phone}
           required
@@ -50,6 +49,6 @@ export default function BasicDataForm({ setUserData, userData, goNextTab }) {
           <ContainedButton type="submit">Next</ContainedButton>
         </div>
       </Column>
-     </Form>
+    </Form>
   );
 }

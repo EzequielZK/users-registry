@@ -25,6 +25,20 @@ class Modal extends React.Component {
     this.setState({ component, options, open: true });
   };
 
+  getTypeModal = (type) => {
+    const modalType = {
+      success: {
+        bgColor: "primary",
+        color: "contrastBackground",
+      },
+      error: {
+        bgColor: "red",
+        color: "contrastBackground",
+      },
+    };
+    return modalType[type];
+  };
+
   render() {
     const { open, component, options } = this.state;
     const { props } = options;
@@ -41,7 +55,7 @@ class Modal extends React.Component {
             h={options.height}
             onMobile={{ height: "unset" }}
           >
-            <Component {...props} />
+            <Component {...props} close={this.close} />
           </ContrastContainer>
         </OutsideClick>
       </ModalBackground>

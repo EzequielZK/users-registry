@@ -25,6 +25,8 @@ export default function AddressForm({
           name="cep"
           label="Zip code"
           placeholder="00000-000"
+          mask="cepMask"
+          validation="isCep"
           defaultValue={userData.cep}
           required
         />

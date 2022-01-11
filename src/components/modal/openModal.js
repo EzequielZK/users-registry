@@ -17,3 +17,4 @@ export function closeModal() {
 }
 
 export default { defaultModal };
+ 

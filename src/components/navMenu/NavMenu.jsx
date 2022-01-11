@@ -38,7 +38,7 @@ export default function NavMenu({ children }) {
 
   const page = navIndex[route.pathname] ? navIndex[route.pathname] : {};
 
-  const { TopBarContent = () => <></> } = page;
+  const { title } = page;
   return (
     <Container fullHeight withBgColor>
       {page.navigation && (
@@ -51,12 +51,7 @@ export default function NavMenu({ children }) {
             windowWidth={windowWidth}
           />
 
-          <TopBar>
-            <TopBarContent
-              pathname={route.pathname}
-              userName="Ezequiel Rosa Lara"
-            />
-          </TopBar>
+          <TopBar title={title} />
         </>
       )}
 

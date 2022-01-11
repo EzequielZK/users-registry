@@ -14,8 +14,18 @@ function successModal(
   feedbackModalRef.setModalProps(text, 'success');
 }
 
+function errorModal(
+  text,
+) {
+  if (!feedbackModalRef) {
+    return;
+  }
+
+  feedbackModalRef.setModalProps(text, 'error');
+}
+
 export function closeModal() {
   feedbackModalRef.close();
 }
 
-export default { successModal };
+export default { successModal, errorModal };

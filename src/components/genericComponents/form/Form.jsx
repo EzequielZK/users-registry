@@ -1,56 +1,60 @@
 import React, { createContext, useState } from "react";
+import { openFeedbackModal } from "..";
 
 export const FormContext = createContext({});
 
 export default function Form({ onSubmit, children }) {
   const [data, setData] = useState({});
-  const [inputs, setInputs] = useState([]);
-
-  // const fillRequiredLabels = (key, label) => {
-  //   inputLabels = { ...inputLabels, [key]: label };
-  // };
+  const [inputErrors, setInputErrors] = useState({});
 
   function addData(key, value) {
-    setData(key, value);
+    let newData = data;
+    newData = { ...newData, [key]: value };
+    setData(newData);
   }
 
-  function getInputRef(callback) {
-    const inputRef = callback();
-    const currentInputs = inputs;
-    currentInputs.push(inputRef);
-    setInputs(currentInputs);
+  function removeData(key) {
+    const newData = data;
+    delete newData[key];
+    setData(newData);
+  }
+
+  function getInputErrors(name, error) {
+    let savedInputs = inputErrors;
+    savedInputs = { ...savedInputs, [name]: error };
+    setInputErrors(savedInputs);
   }
 
   function validateInputs() {
-    let i = 0;
+    let key;
 
-    const invalidInputs = [];
-    const { length } = inputs;
-    for (; i < length; i++) {
-      const input = inputs[i];
-      if (input.error) {
-        invalidInputs.push(input);
+    let isValid = true;
+
+    for (key in inputErrors) {
+      const error = inputErrors[key];
+      if (error) {
+        isValid = false;
       }
     }
-    return { isValid: invalidInputs.length, invalidInputs };
+
+    return { isValid };
   }
 
   function submit(event) {
     event.preventDefault();
-    const { isValid, invalidInputs } = validateInputs();
+    const { isValid } = validateInputs();
     if (isValid) {
       onSubmit(data);
     } else {
-      console.log(invalidInputs);
+      openFeedbackModal.errorModal(
+        "Alguns campos não foram preenchidos corretamente. Corrijá-os para prosseguir!"
+      );
     }
   }
-  // const removeData = (key) => {
-  //   delete data[key];
-  // };
 
   return (
-    <FormContext.Provider value={{ addData, getInputRef }}>
-      <form id="form" onSubmit={submit}>
+    <FormContext.Provider value={{ addData, removeData, getInputErrors }}>
+      <form id="form" onSubmit={submit} style={{ width: "100%" }}>
         {children}
       </form>
     </FormContext.Provider>

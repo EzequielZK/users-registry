@@ -15,24 +15,33 @@ export default function CustomInput({
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { addData, getInputRef } = useContext(FormContext);
+  const { addData, removeData, getInputErrors } = useContext(FormContext);
 
   useEffect(() => {
-    getInputRef(sendRef);
     if (!value) {
       setError(false);
       setErrorMessage("");
+      removeData(props.name);
     } else {
       if (validationToTest) {
         const { isValid, errorMessage } = validationToTest(value);
+
         setError(!isValid);
         setErrorMessage(errorMessage);
         if (isValid) {
           addData(props.name, value);
+        } else {
+          removeData(props.name);
         }
+      } else {
+        addData(props.name, value);
       }
     }
   }, [value]);
+
+  useEffect(() => {
+    getInputErrors(props.name, error);
+  }, [error]);
 
   function sendRef() {
     return {

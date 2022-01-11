@@ -1,18 +1,17 @@
 import { ContrastContainer, Text } from "../../../styles/components";
-import { setFeedbackModalRef } from "./openFeedbackModal";
+import { setFeedbackModalRef } from "../../genericComponents/feedbackModal/openFeedbackModal";
 import React from "react";
 import {
   MOVE_FROM_TOP,
   MOVE_TO_TOP,
 } from "../../../animations/feedbackModal/feedbackModalAnimation";
-import mainTheme from "../../../styles/themes/mainTheme";
 
 class FeedbackModal extends React.Component {
   state = {
     open: false,
     type: "",
     text: "",
-    animation: '',
+    animation: "",
   };
 
   componentDidMount() {
@@ -45,7 +44,7 @@ class FeedbackModal extends React.Component {
         color: "contrastBackground",
       },
       error: {
-        bgColor: "red",
+        bgColor: "error",
         color: "contrastBackground",
       },
     };
@@ -62,7 +61,7 @@ class FeedbackModal extends React.Component {
         position="absolute"
         zIndex={2000}
         top="-50px"
-        right="50%"
+        right="550px"
         boxShadow="0 0 10px 0 gray"
         bgColor={theme?.bgColor}
         animationName={animation}
