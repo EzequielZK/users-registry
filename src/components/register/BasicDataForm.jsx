@@ -31,6 +31,7 @@ export default function BasicDataForm({ setUserData, userData, goNextTab }) {
           containerStyle={{ className: "column-item" }}
           name="email"
           label="E-mail"
+          validation="isEmail"
           placeholder="example@email.com"
           defaultValue={userData.email}
           required
@@ -39,19 +40,16 @@ export default function BasicDataForm({ setUserData, userData, goNextTab }) {
           containerStyle={{ className: "column-item" }}
           name="phone"
           label="Phone"
+          mask="cpfMask"
+          validation="isCpf"
           placeholder="(00) 0 0000-0000"
           defaultValue={userData.phone}
           required
         />
         <div>
-          <ContainedButton
-            type="submit"
-
-          >
-            Next
-          </ContainedButton>
+          <ContainedButton type="submit">Next</ContainedButton>
         </div>
       </Column>
-    </Form>
+     </Form>
   );
 }

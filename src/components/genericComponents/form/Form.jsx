@@ -1,35 +1,58 @@
-import { useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
-export default function Form({ onSubmit, children, clearOnSubmit, ...props }) {
-  const [from, setForm] = useState();
-  let data = {};
-  useEffect(() => {
-    const formRef = document.getElementById("form");
-    setForm(formRef);
-  }, []);
+export const FormContext = createContext({});
+
+export default function Form({ onSubmit, children }) {
+  const [data, setData] = useState({});
+  const [inputs, setInputs] = useState([]);
+
+  // const fillRequiredLabels = (key, label) => {
+  //   inputLabels = { ...inputLabels, [key]: label };
+  // };
+
+  function addData(key, value) {
+    setData(key, value);
+  }
+
+  function getInputRef(callback) {
+    const inputRef = callback();
+    const currentInputs = inputs;
+    currentInputs.push(inputRef);
+    setInputs(currentInputs);
+  }
+
+  function validateInputs() {
+    let i = 0;
+
+    const invalidInputs = [];
+    const { length } = inputs;
+    for (; i < length; i++) {
+      const input = inputs[i];
+      if (input.error) {
+        invalidInputs.push(input);
+      }
+    }
+    return { isValid: invalidInputs.length, invalidInputs };
+  }
+
+  function submit(event) {
+    event.preventDefault();
+    const { isValid, invalidInputs } = validateInputs();
+    if (isValid) {
+      onSubmit(data);
+    } else {
+      console.log(invalidInputs);
+    }
+  }
+  // const removeData = (key) => {
+  //   delete data[key];
+  // };
 
   return (
-    <form
-      {...props}
-      id="form"
-      onSubmit={(e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        for (let [key, value] of formData.entries()) {
-          data = { ...data, [key]: value };
-        }
-
-        onSubmit(data);
-
-        if (clearOnSubmit) {
-          form.reset();
-        }
-      }}
-      style={{ width: "100%" }}
-    >
-      {children}
-    </form>
+    <FormContext.Provider value={{ addData, getInputRef }}>
+      <form id="form" onSubmit={submit}>
+        {children}
+      </form>
+    </FormContext.Provider>
   );
 }

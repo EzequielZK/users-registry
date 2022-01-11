@@ -8,17 +8,16 @@ export const Input = styled.input`
   flex-direction: column;
   align-items: ${(props) => props.align};
   justify-content: ${(props) => props.justify};
-  border: none;
+  border: ${(props) => props.error ? `1px solid ${props.theme.colors.error}` : 'none'};
   border-radius: 5px;
-  padding: ${props => props.theme.spacing.sm};
-
+  padding: ${(props) => props.theme.spacing.sm};
 
   ::placeholder {
     font-size: ${(props) => props.theme.fontSize.md};
     color: ${(props) => props.theme.colors.inputPlaceholder};
   }
 
-  :focus{
-      outline: none;
+  :focus {
+    outline: none;
   }
 `;
