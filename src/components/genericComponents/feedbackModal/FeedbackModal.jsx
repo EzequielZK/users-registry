@@ -4,7 +4,7 @@ import React from "react";
 import {
   MOVE_FROM_TOP,
   MOVE_TO_TOP,
-} from "../../../animations/feedbackModal/feedbackModalAnimation";
+} from "../../../animations/feedbackModal/FeedbackModalAnimation";
 
 class FeedbackModal extends React.Component {
   state = {
