@@ -47,7 +47,7 @@ export default function Form({ onSubmit, children }) {
       onSubmit(data);
     } else {
       openFeedbackModal.errorModal(
-        "Alguns campos não foram preenchidos corretamente. Corrijá-os para prosseguir!"
+        "Some fields are incorrect. Fix them to continue!"
       );
     }
   }

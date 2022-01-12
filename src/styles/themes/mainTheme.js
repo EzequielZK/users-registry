@@ -1,16 +1,12 @@
 const mainTheme = {
   colors: {
-    background: "#f2f2f2",
-    contrastBackground: "#fff",
+    tertiary: "#f2f2f2",
+    secondary: "#fff",
     primary: "#00a335",
     text: "#424749",
-    primaryText: "#fff",
-    inputBg: "#f2f2f2",
-    inputColor: "#262626",
     inputPlaceholder: "#7c7c7c",
-    hoverDark: "#262626",
     disabled: "#7c7c7c",
-    error: "red",
+    error: "#ff5757",
     transparent: 'rgba(0, 0, 0, 0)'
   },
   spacing: {

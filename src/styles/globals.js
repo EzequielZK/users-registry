@@ -16,24 +16,18 @@ div#__next{
   height: 100%; 
   width: 100%;
 }
-/* width */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
-  background-color: ${props => props.theme.colors.background}; 
+  background-color: ${(props) => props.theme.colors.tertiary}; 
 }
  
-/* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: ${props => props.theme.colors.contrastBackground}; 
+  background-color: ${(props) => props.theme.colors.secondary}; 
     border-radius: 5px;
 }
 
-/* Handle on hover */
-/* ::-webkit-scrollbar-thumb:hover {
-  background-color: ${props => props.background}; 
-} */
 `;

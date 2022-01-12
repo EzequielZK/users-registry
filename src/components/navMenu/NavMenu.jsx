@@ -40,7 +40,7 @@ export default function NavMenu({ children }) {
 
   const { title } = page;
   return (
-    <Container fullHeight withBgColor>
+    <Container fullHeight withBgColor padding={0}>
       {page.navigation && (
         <>
           <SideBar
@@ -56,7 +56,6 @@ export default function NavMenu({ children }) {
       )}
 
       <Container
-        padding={2}
         paddingLeft={windowWidth && windowWidth > 600 && "266px"}
         fullWidth
         fullHeight

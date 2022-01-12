@@ -8,6 +8,7 @@ import {
   Text,
 } from "../../../styles/components";
 import { useState } from "react";
+import { useTheme } from "styled-components";
 
 export default function TabContainer({ allowNavigate = true, screens = [] }) {
   const [selected, setSelected] = useState(0);
@@ -52,8 +53,8 @@ export default function TabContainer({ allowNavigate = true, screens = [] }) {
           </TabButton>
         ))}
       </Row>
-      <Divider color="background" />
-      <Container padding={2}>
+      <Divider color="tertiary" />
+      <Container>
         <Column spacing={2}>
           <TabContent
             {...props}

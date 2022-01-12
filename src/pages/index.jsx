@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
 import { UsersCards } from "../components";
 import { EmptyPage } from "../components/genericComponents";
-import editUser from "../cookies/editUser";
 import getUsers from "../cookies/getUsers";
 import {
-  Container,
-  ContrastContainer,
-  OutlinedButton,
   Row,
-  Text,
 } from "../styles/components";
 
 
@@ -34,7 +29,6 @@ export default function Home() {
     );
   }
   return (
-    <Container>
       <Row spacing={2} wrap>
         {users.map((item, index) => (
           <UsersCards
@@ -45,7 +39,6 @@ export default function Home() {
           />
         ))}
       </Row>
-    </Container>
   );
 }
 

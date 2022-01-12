@@ -16,7 +16,7 @@ const Button = styled.button`
 `;
 
 export const ContainedButton = styled(Button)`
-  color: ${(props) => props.theme.colors.primaryText};
+  color: ${(props) => props.theme.colors.secondary};
   background-color: ${(props) => props.theme.colors.primary};
   :hover {
     background-color: transparent;
@@ -32,14 +32,14 @@ export const OutlinedButton = styled(Button)`
   :hover {
     background-color: ${(props) =>
       props.theme.colors[props.color ?? "primary"]};
-    color: ${(props) => props.theme.colors.primaryText};
+    color: ${(props) => props.theme.colors.secondary};
   }
 `;
 
 export const IconButton = styled(Button)`
   color: ${(props) => props.theme.colors.primary};
   background-color: ${(props) =>
-    props.theme.colors[props.bgColor ?? "background"]};
+    props.theme.colors[props.bgColor ?? "tertiary"]};
   border: none;
   border-radius: ${(props) => props.borderRadius};
   width: ${(props) => props.width};
@@ -61,7 +61,7 @@ export const IconButton = styled(Button)`
 export const MenuButton = styled(Button)`
   color: ${(props) =>
     props.selected
-      ? props.theme.colors.contrastBackground
+      ? props.theme.colors.secondary
       : props.theme.colors.text};
   background-color: ${(props) =>
     props.selected ? props.theme.colors.primary : "transparent"};

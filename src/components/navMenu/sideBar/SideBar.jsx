@@ -40,10 +40,9 @@ export default function SideBar({
       position="fixed"
       left={0}
       top={0}
-      h="100%"
+      height="100%"
       zIndex={1500}
       boxShadow="-15px 10px 15px 10px gray"
-      // padding="100px 0 0 0"
       animationName={animation}
       animationDuration="0.5s"
       animationFillMode="forwards"

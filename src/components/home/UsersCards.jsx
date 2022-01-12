@@ -26,7 +26,7 @@ export default function UsersCards({ details, setUsers, users }) {
     <ContrastContainer
       className="row-item"
       rounded
-      width={400}
+      width='400px'
       boxShadow="0 10px 10px -10px gray"
     >
       <Column spacing={1} align="flex-start" fullWidth wrap>
@@ -37,8 +37,8 @@ export default function UsersCards({ details, setUsers, users }) {
             fullWidth
             onClick={() =>
               openModal.defaultModal(UserDetails, {
-                width: 900,
-                height: 700,
+                width: '900px',
+                height: '700px',
                 props: { id: details.id, users, setName },
               })
             }

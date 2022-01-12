@@ -19,7 +19,7 @@ export default function PersonalDataForm({
       clearOnSubmit
       onSubmit={(data) => {
         saveUser({ ...userData, ...data });
-        openFeedbackModal.successModal("Usuário salvo com sucesso!");
+        openFeedbackModal.successModal("User saved successful!");
         clearData();
         goToFirstTab();
       }}

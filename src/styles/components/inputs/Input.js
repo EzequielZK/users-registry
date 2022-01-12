@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  background-color: ${(props) => props.theme.colors.inputBg};
-  color: ${(props) => props.theme.inputColor};
+  background-color: ${(props) => props.theme.colors.tertiary};
+  color: ${(props) => props.theme.text};
   padding: ${(props) => props.theme.spacing[props.padding]};
   display: flex;
   align-items: ${(props) => props.align};

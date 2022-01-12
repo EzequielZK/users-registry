@@ -41,11 +41,11 @@ class FeedbackModal extends React.Component {
     const modalType = {
       success: {
         bgColor: "primary",
-        color: "contrastBackground",
+        color: "secondary",
       },
       error: {
         bgColor: "error",
-        color: "contrastBackground",
+        color: "secondary",
       },
     };
     return modalType[type];
@@ -61,7 +61,6 @@ class FeedbackModal extends React.Component {
         position="absolute"
         zIndex={2000}
         top="-100px"
-        // right="550px"
         align="center"
         animationName={animation}
         animationDuration="0.5s"
