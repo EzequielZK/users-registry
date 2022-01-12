@@ -11,6 +11,7 @@ import {
   Row,
   Text,
 } from "../../styles/components";
+import { openFeedbackModal } from "../genericComponents";
 import UserDetails from "./UserDetails";
 
 export default function UsersCards({ details, setUsers, users }) {
@@ -51,6 +52,7 @@ export default function UsersCards({ details, setUsers, users }) {
             onClick={() => {
               const newUsers = deleteUser(details.id);
               setUsers(newUsers);
+              openFeedbackModal.successModal("Usuário deletado com sucesso!")
             }}
           >
             Delete user

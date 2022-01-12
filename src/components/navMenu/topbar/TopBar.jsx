@@ -10,11 +10,13 @@ export default function TopBar({ title }) {
       zIndex={1000}
       boxShadow="0 -15px 10px 15px gray"
       h={100}
-      padding='16px 16px 16px 266px'
+      padding="16px 16px 16px 266px"
+      align="center"
+      onMobile={{ justify: 'flex-end', padding: '16px' }}
     >
-      <Row justify="space-between" align="center">
-        <Text variant='h1'>{title}</Text>
-      </Row>
+
+        <Text variant="h1">{title}</Text>
+   
     </ContrastContainer>
   );
 }

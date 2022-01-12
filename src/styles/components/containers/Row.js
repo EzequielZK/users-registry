@@ -26,4 +26,8 @@ export const Row = styled.div`
   width: ${(props) => (props.fullWidth ? "100%" : "auto")};
   height: ${(props) => (props.fullHeight ? "100%" : "auto")};
   position: ${(props) => props.position};
+
+  @media only screen and (max-width: 500px){
+    justify-content: ${props => props.onMobile?.justify};
+  }
 `;

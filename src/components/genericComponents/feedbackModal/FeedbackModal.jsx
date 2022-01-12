@@ -60,7 +60,7 @@ class FeedbackModal extends React.Component {
         fullWidth
         position="absolute"
         zIndex={2000}
-        top="-55px"
+        top="-100px"
         // right="550px"
         align="center"
         animationName={animation}

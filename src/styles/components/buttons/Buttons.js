@@ -86,7 +86,7 @@ export const TabButton = styled(Button)`
   font-size: ${(props) => props.theme.fontSize.lg};
   border-radius: 0;
   width: ${(props) => props.fullWidth && "100%"};
-
+overflow-wrap: anywhere;
   :hover {
     color: ${(props) =>
       !props.selected && !props.disabled && props.theme.colors.primary};

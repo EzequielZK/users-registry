@@ -42,5 +42,8 @@ export const ContrastContainer = styled.div`
 
   @media only screen and (max-width: 500px) {
     height: ${(props) => props.onMobile?.height};
+    padding: ${(props) => props.onMobile?.padding};
+    justify-content: ${(props) => props.onMobile?.justify};
+    align-items: ${(props) => props.onMobile?.align};
   }
 `;

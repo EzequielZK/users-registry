@@ -40,7 +40,7 @@ export default function UserDetailsSection({ title, content = [] }) {
       </Row>
       <Divider margin="sm" color="primary" />
       {content.map((item, index) =>
-        editMode ? (
+        editMode && item.value ? (
           <CustomInput
             {...item}
             defaultValue={item.value}
