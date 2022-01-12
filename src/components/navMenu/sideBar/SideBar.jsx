@@ -27,6 +27,8 @@ export default function SideBar({
   windowWidth,
 }) {
   const theme = useTheme();
+  const { mobile } = theme.screenSize;
+  const { sideBarWidth } = theme.spacing;
   let animation = MENU_OUT;
   if (open) {
     animation = MENU_IN;
@@ -35,7 +37,7 @@ export default function SideBar({
     <ContrastContainer
       fullHeight
       padding="0px"
-      width={theme.spacing.sideBarWidth}
+      width={sideBarWidth}
       maxWidth="100%"
       position="fixed"
       left={0}
@@ -57,7 +59,7 @@ export default function SideBar({
                   selected={item.path === pathname}
                   key={index}
                   fullWidth
-                  onClick={() => windowWidth < 600 && setOpen(false)}
+                  onClick={() => windowWidth < mobile && setOpen(false)}
                 >
                   {item.text}
                 </MenuButton>

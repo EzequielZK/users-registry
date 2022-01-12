@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useTheme } from "styled-components";
 import { navIndex } from ".";
 import { HOME_PAGE, REGISTER_PAGE } from "../../navigation/paths";
 import { Container } from "../../styles/components";
@@ -10,12 +11,19 @@ export default function NavMenu({ children }) {
   const [sideBarOpen, setSideBarOpen] = useState(true);
   const [windowWidth, setWindowWidth] = useState();
 
+  const theme = useTheme();
+  const { mobile } = theme.screenSize;
+
   useEffect(() => {
     setWindowWidth(window.innerWidth);
 
     function onResize(e) {
-      setWindowWidth(e.target.innerWidth);
-      setSideBarOpen(true);
+      const { innerWidth } = e.target;
+
+      setWindowWidth(innerWidth);
+      if (e.target.innerWidth > mobile) {
+        setSideBarOpen(true);
+      }
     }
 
     window.addEventListener("resize", onResize);
@@ -56,7 +64,7 @@ export default function NavMenu({ children }) {
       )}
 
       <Container
-        paddingLeft={windowWidth && windowWidth > 600 && "266px"}
+        paddingLeft={windowWidth && windowWidth > mobile && "266px"}
         fullWidth
         fullHeight
         withBgColor

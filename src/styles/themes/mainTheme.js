@@ -7,7 +7,7 @@ const mainTheme = {
     inputPlaceholder: "#7c7c7c",
     disabled: "#7c7c7c",
     error: "#ff5757",
-    transparent: 'rgba(0, 0, 0, 0)'
+    transparent: "rgba(0, 0, 0, 0)",
   },
   spacing: {
     sm: "8px",
@@ -24,6 +24,9 @@ const mainTheme = {
     lg: "15px",
     xl: "18px",
     xxl: "24px",
+  },
+  screenSize: {
+    mobile: 600,
   },
   fonts: {
     h1: {
