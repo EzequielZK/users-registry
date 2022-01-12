@@ -53,6 +53,7 @@ export default function UserDetails({ id, users, setName }) {
               value: userDetails.email,
               name: "email",
               validation: "isEmail",
+              mask: "emailMask",
             },
             {
               label: "Phone",
@@ -93,8 +94,19 @@ export default function UserDetails({ id, users, setName }) {
               value: userDetails.birthdate,
               name: "birthdate",
             },
-            { label: "CPF", value: userDetails.cpf, name: "cpf", validation:'isCpf', mask:'cpfMask' },
-            { label: "Salary", value: userDetails.salary, name: "salary", mask:'moneyMask' },
+            {
+              label: "CPF",
+              value: userDetails.cpf,
+              name: "cpf",
+              validation: "isCpf",
+              mask: "cpfMask",
+            },
+            {
+              label: "Salary",
+              value: userDetails.salary,
+              name: "salary",
+              mask: "moneyMask",
+            },
           ]}
         />
       </Column>
