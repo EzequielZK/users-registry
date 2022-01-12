@@ -13,6 +13,7 @@ export default function NavMenu({ children }) {
 
   const theme = useTheme();
   const { mobile } = theme.screenSize;
+  const {navContentPaddingLeft, navContentPaddingTop} = theme.spacing
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -64,7 +65,8 @@ export default function NavMenu({ children }) {
       )}
 
       <Container
-        paddingLeft={windowWidth && windowWidth > mobile && "266px"}
+        paddingLeft={windowWidth && windowWidth > mobile && navContentPaddingLeft}
+        paddingTop={navContentPaddingTop}
         fullWidth
         fullHeight
         withBgColor

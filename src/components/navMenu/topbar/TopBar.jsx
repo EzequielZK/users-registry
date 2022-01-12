@@ -5,12 +5,13 @@ export default function TopBar({ title }) {
   const theme = useTheme();
   return (
     <ContrastContainer
-      position="sticky"
+      position="fixed"
+      width="100%"
       top={0}
       zIndex={1000}
       boxShadow="0 -15px 10px 15px gray"
       height="100px"
-      paddingLeft={theme.spacing.navContentPadding}
+      paddingLeft={theme.spacing.navContentPaddingLeft}
       align="center"
       onMobile={{ justify: "flex-end", paddingLeft: 0, padding: "md" }}
     >

@@ -6,10 +6,10 @@ const theme = mainTheme;
 
 const CONTENT_WITH_NAV = movePadding(
   `${theme.spacing.md}`,
-  `${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.navContentPadding}`
+  `${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.navContentPaddingLeft}`
 );
 const CONTENT_WITHOUT_NAV = movePadding(
-  `${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.navContentPadding}`,
+  `${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.md} ${theme.spacing.navContentPaddingLeft}`,
   `${theme.spacing.md}`
 );
 

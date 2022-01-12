@@ -16,7 +16,8 @@ const mainTheme = {
     xl: "32px",
 
     sideBarWidth: "250px",
-    navContentPadding: "266px",
+    navContentPaddingLeft: "266px",
+    navContentPaddingTop: "116px",
   },
   fontSize: {
     sm: "11px",
