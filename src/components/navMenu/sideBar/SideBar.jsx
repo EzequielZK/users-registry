@@ -18,6 +18,7 @@ import {
 import { useTheme } from "styled-components";
 import Image from "next/image";
 import Images from "../../images/Images";
+import OutsideClick from "../../genericComponents/outsideClick/OutsideClick";
 
 export default function SideBar({
   menuItems = [],
@@ -34,44 +35,46 @@ export default function SideBar({
     animation = MENU_IN;
   }
   return (
-    <ContrastContainer
-      fullHeight
-      padding="0px"
-      width={sideBarWidth}
-      maxWidth="100%"
-      position="fixed"
-      left={0}
-      top={0}
-      height="100%"
-      zIndex={1500}
-      boxShadow="-15px 10px 15px 10px gray"
-      animationName={animation}
-      animationDuration="0.5s"
-      animationFillMode="forwards"
-    >
-      <Column spacing={6} fullWidth>
-        <Image src={Images.Logo} />
-        <Column className="column-item">
-          {menuItems.map((item, index) => (
-            <Row key={index} fullWidth>
-              <Link href={item.path}>
-                <MenuButton
-                  selected={item.path === pathname}
-                  key={index}
-                  fullWidth
-                  onClick={() => windowWidth < mobile && setOpen(false)}
-                >
-                  {item.text}
-                </MenuButton>
-              </Link>
-            </Row>
-          ))}
+    <OutsideClick onClickOutside={() => setOpen(false)}>
+      <ContrastContainer
+        fullHeight
+        padding="0px"
+        width={sideBarWidth}
+        maxWidth="100%"
+        position="fixed"
+        left={0}
+        top={0}
+        height="100%"
+        zIndex={1500}
+        boxShadow="-15px 10px 15px 10px gray"
+        animationName={animation}
+        animationDuration="0.5s"
+        animationFillMode="forwards"
+      >
+        <Column spacing={6} fullWidth>
+          <Image src={Images.Logo} />
+          <Column className="column-item">
+            {menuItems.map((item, index) => (
+              <Row key={index} fullWidth>
+                <Link href={item.path}>
+                  <MenuButton
+                    selected={item.path === pathname}
+                    key={index}
+                    fullWidth
+                    onClick={() => windowWidth < mobile && setOpen(false)}
+                  >
+                    {item.text}
+                  </MenuButton>
+                </Link>
+              </Row>
+            ))}
+          </Column>
         </Column>
-      </Column>
-      <Hide screenSize={500}>
-        <ControllerButton open={open} setOpen={setOpen} />
-      </Hide>
-    </ContrastContainer>
+        <Hide screenSize={500}>
+          <ControllerButton open={open} setOpen={setOpen} />
+        </Hide>
+      </ContrastContainer>
+    </OutsideClick>
   );
 }
 
