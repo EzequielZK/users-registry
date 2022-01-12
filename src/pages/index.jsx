@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UsersCards } from "../components";
 import { EmptyPage } from "../components/genericComponents";
-import getUsers from "../cookies/getUsers";
-import {
-  Row,
-} from "../styles/components";
-
+import { StorageContext } from "../context/StorageContext";
+import { Row } from "../styles/components";
 
 export default function Home() {
-  const [users, setUsers] = useState([]);
-
+  const { data, getStorageUsers, deleteStorageUser, editStorageUser } =
+    useContext(StorageContext);
   useEffect(() => {
-    const usersList = getUsers();
-    setUsers(usersList);
+    getStorageUsers();
   }, []);
 
-  useEffect(() => {
-    const usersList = getUsers();
-    setUsers(usersList);
-  }, [users.length]);
-
-  if (!users.length) {
+  if (!data.users.length) {
     return (
       <EmptyPage
         text="No users found."
@@ -29,17 +20,16 @@ export default function Home() {
     );
   }
   return (
-      <Row spacing={2} wrap>
-        {users.map((item, index) => (
-          <UsersCards
-            key={index}
-            details={item}
-            setUsers={setUsers}
-            users={users}
-          />
-        ))}
-      </Row>
+    <Row spacing={2} wrap="true">
+      {data.users.map((item, index) => (
+        <UsersCards
+          key={index}
+          details={item}
+          getUsers={getStorageUsers}
+          deleteUser={deleteStorageUser}
+          editUser={editStorageUser}
+        />
+      ))}
+    </Row>
   );
 }
-
-

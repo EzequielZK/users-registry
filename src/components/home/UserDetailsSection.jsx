@@ -42,6 +42,7 @@ export default function UserDetailsSection({ title, content = [] }) {
       {content.map((item, index) =>
         editMode && item.value ? (
           <CustomInput
+            key={index}
             {...item}
             defaultValue={item.value}
             readOnly={item.name === "cpf"}

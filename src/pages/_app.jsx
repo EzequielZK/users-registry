@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/themes/mainTheme.js";
 import Head from "next/head";
 import FeedbackModal from "../components/genericComponents/feedbackModal/FeedbackModal.jsx";
+import Storage from "../context/StorageContext.jsx";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,12 +14,14 @@ function MyApp({ Component, pageProps }) {
         <title>Users Registration</title>
       </Head>
       <ThemeProvider theme={mainTheme}>
-        <NavMenu>
-          <Component {...pageProps} />
-        </NavMenu>
-        <GlobalStyle />
-        <Modal />
-        <FeedbackModal />
+        <Storage>
+          <NavMenu>
+            <Component {...pageProps} />
+          </NavMenu>
+          <GlobalStyle />
+          <Modal />
+          <FeedbackModal />
+        </Storage>
       </ThemeProvider>
     </>
   );

@@ -2,13 +2,11 @@ import {
   Column,
   Container,
   Divider,
-  OutlinedButton,
   Row,
   TabButton,
   Text,
 } from "../../../styles/components";
 import { useState } from "react";
-import { useTheme } from "styled-components";
 
 export default function TabContainer({ allowNavigate = true, screens = [] }) {
   const [selected, setSelected] = useState(0);
@@ -56,6 +54,9 @@ export default function TabContainer({ allowNavigate = true, screens = [] }) {
       <Divider color="tertiary" />
       <Container>
         <Column spacing={2}>
+          <Text className="column-item" variant="h2">
+            {screens[selected].title}
+          </Text>
           <TabContent
             {...props}
             selected={selected}

@@ -1,4 +1,9 @@
-import { ContrastContainer, ModalBackground } from "../../styles/components";
+import {
+  Column,
+  ContainedButton,
+  ContrastContainer,
+  ModalBackground,
+} from "../../styles/components";
 import { setModalRef } from "./openModal";
 import React from "react";
 import { OutsideClick } from "..";
@@ -34,15 +39,22 @@ class Modal extends React.Component {
     }
     return (
       <ModalBackground>
-        <OutsideClick onClickOutside={this.close}>
-          <ContrastContainer
-            rounded
-            width={options.width}
-            height={options.height}
-            onMobile={{ height: "unset" }}
-          >
+        <OutsideClick
+          onClickOutside={this.close}
+          Component={ContrastContainer}
+          props={{
+            rounded: true,
+            width: options.width,
+            height: options.height,
+            onMobile: { height: "unset" },
+          }}
+        >
+          <Column justify="space-between" fullWidth>
             <Component {...props} close={this.close} />
-          </ContrastContainer>
+            <ContainedButton onClick={() => this.close(false)}>
+              Fechar
+            </ContainedButton>
+          </Column>
         </OutsideClick>
       </ModalBackground>
     );

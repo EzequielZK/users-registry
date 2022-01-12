@@ -22,7 +22,7 @@ export default function NavMenu({ children }) {
       const { innerWidth } = e.target;
 
       setWindowWidth(innerWidth);
-      if (e.target.innerWidth > mobile) {
+      if (innerWidth > mobile) {
         setSideBarOpen(true);
       }
     }

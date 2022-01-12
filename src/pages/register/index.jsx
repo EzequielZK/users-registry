@@ -16,17 +16,20 @@ export default function Register() {
         allowNavigate={false}
         screens={[
           {
-            label: "Basic data",
+            label: "Step 1",
+            title: 'Basic data',
             component: BasicDataForm,
             props: { userData, setUserData },
           },
           {
-            label: "Address",
+            label: "Step 2",
+            title: 'Address',
             component: AddressForm,
             props: { userData, setUserData },
           },
           {
-            label: "Personal data",
+            label: "Step 3",
+            title: 'Personal data',
             component: PersonalDataForm,
             props: { userData, clearData },
           },

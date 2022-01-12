@@ -10,9 +10,10 @@ export default function CustomInput({
   mask,
   validation,
   helperText,
+  defaultValue,
   ...props
 }) {
-  const [value, setValue] = useState(props.defaultValue);
+  const [value, setValue] = useState(defaultValue ?? "");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 

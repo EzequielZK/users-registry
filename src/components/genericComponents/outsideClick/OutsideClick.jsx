@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function OutsideClick({ onClickOutside = () => {}, children }) {
+export default function OutsideClick({
+  onClickOutside = () => {},
+  Component,
+  props,
+  children,
+}) {
   React.useEffect(() => {
     const container = document.getElementById("container");
     function mouseInside(e) {
@@ -14,13 +19,8 @@ export default function OutsideClick({ onClickOutside = () => {}, children }) {
   }, []);
 
   return (
-    <div
-      style={{
-        maxWidth: "100%",
-      }}
-      id="container"
-    >
+    <Component id="container" {...props}>
       {children}
-    </div>
+    </Component>
   );
 }

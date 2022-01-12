@@ -1,4 +1,5 @@
-import saveUser from "../../cookies/saveUser";
+import { useContext } from "react";
+import { StorageContext } from "../../context/StorageContext";
 import {
   Column,
   ContainedButton,
@@ -14,11 +15,12 @@ export default function PersonalDataForm({
   goPrevTab,
   goToFirstTab,
 }) {
+  const { saveStorageUser } = useContext(StorageContext);
   return (
     <Form
       clearOnSubmit
       onSubmit={(data) => {
-        saveUser({ ...userData, ...data });
+        saveStorageUser({ ...userData, ...data });
         openFeedbackModal.successModal("User saved successful!");
         clearData();
         goToFirstTab();
