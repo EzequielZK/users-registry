@@ -3,7 +3,8 @@ import styled from "styled-components";
 const Button = styled.button`
   border: 1px solid ${(props) => props.theme.colors[props.color ?? "primary"]};
   border-radius: 5px;
-  padding: ${(props) => !props.withoutPadding && props.theme.spacing.sm} ${(props) => !props.withoutPadding && props.theme.spacing.md};
+  padding: ${(props) => !props.withoutPadding && props.theme.spacing.sm}
+    ${(props) => !props.withoutPadding && props.theme.spacing.md};
   font-size: ${(props) => props.theme.fontSize.md};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   width: ${(props) => (props.fullWidth ? "100%" : "unset")};
@@ -60,9 +61,7 @@ export const IconButton = styled(Button)`
 
 export const MenuButton = styled(Button)`
   color: ${(props) =>
-    props.selected
-      ? props.theme.colors.secondary
-      : props.theme.colors.text};
+    props.selected ? props.theme.colors.secondary : props.theme.colors.text};
   background-color: ${(props) =>
     props.selected ? props.theme.colors.primary : "transparent"};
   border: none;
@@ -86,9 +85,13 @@ export const TabButton = styled(Button)`
   font-size: ${(props) => props.theme.fontSize.lg};
   border-radius: 0;
   width: ${(props) => props.fullWidth && "100%"};
-overflow-wrap: anywhere;
+
   :hover {
     color: ${(props) =>
       !props.selected && !props.disabled && props.theme.colors.primary};
+  }
+
+  @media only screen and (max-width: 300px) {
+    overflow-wrap: anywhere;
   }
 `;
