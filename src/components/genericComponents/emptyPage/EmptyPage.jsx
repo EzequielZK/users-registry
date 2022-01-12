@@ -9,8 +9,14 @@ export default function EmptyPage({ text, tip }) {
         style={{ width: 120, height: 120 }}
         icon={faFolderOpen}
       />
-      <Text variant="h1">{text}</Text>
-      {tip && <Text variant="h3">{tip}</Text>}
+      <Text variant="h1" textAlign="center">
+        {text}
+      </Text>
+      {tip && (
+        <Text variant="h3" textAlign="center">
+          {tip}
+        </Text>
+      )}
     </Container>
   );
 }
